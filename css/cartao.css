@@ -57,6 +57,16 @@
 	overflow: auto;
 }
 
+.cartao .opcoesDoCartao{
+	opacity:0;
+	transition: 300ms;
+	pointer-events: none;
+}
+.cartao:hover .opcoesDoCartao, .focusIn .opcoesDoCartao{ 
+	opacity:1;
+	pointer-events: auto
+}
+
 @media (min-width: 560px){
 
 	.cartao {

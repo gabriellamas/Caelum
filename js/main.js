@@ -1,13 +1,25 @@
 //LINHAS PARA BLOCOS
-var btLinhasColunas = document.querySelector('.bt-linhas-colunas')
+let btLinhasColunas = document.querySelector('.bt-linhas-colunas')
 mural = document.querySelector('.mural')
 btsRemover = document.querySelectorAll('.opcoesDoCartao-remove')
 
 noJs = document.querySelectorAll('.no-js')
-console.log(noJs)
 noJs.forEach(function(element){
     element.classList.remove('no-js')
 })
+
+mural.addEventListener('click', function(event){
+
+    if( event.target.classList.contains('opcoesDoCartao-remove') ){
+            event.target.parentNode.parentNode.classList.add('cartao--some')
+            event.target.parentNode.parentNode.addEventListener('transitionend', function(){
+                this.remove();
+            })
+    }else if(event.target.classList.contains('opcoesDoCartao-radioTipo') ){
+        event.target.parentNode.parentNode.style.background = `${event.target.value}`
+    }
+})
+
 
 
 btLinhasColunas.addEventListener('click', function(){
@@ -20,16 +32,30 @@ btLinhasColunas.addEventListener('click', function(){
 
 })
 
-btsRemover.forEach(function(element){
-    element.addEventListener('click', function(element){
-        let cartaoAtual = this.parentNode.parentNode
-        cartaoAtual.classList.add('cartao--some')
 
-        cartaoAtual.addEventListener('transitionend', function(){
-            this.remove();
-        })
+//Focus Out
+const cards = document.querySelectorAll('.cartao')
+cards.forEach(function(element){
+    element.addEventListener('focusin', function(event){
+        event.PreventDefault
+        this.classList.add('focusIn')
+    })
+
+    element.addEventListener('focusout', function(event){
+        event.PreventDefault
+        this.classList.remove('focusIn')
     })
 })
 
 
+//TECLAS
+const labels = document.querySelectorAll('.cartao label')
+labels.forEach(function(label){
+    label.addEventListener('keyup', function(event){
+        if( event.keyCode == 13 || event.keyCode == 32 ){
+           event.target.click()
+        }
+    })
+})
 
+//Validando cartao antes de adicionar
