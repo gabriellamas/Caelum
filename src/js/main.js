@@ -1,9 +1,9 @@
 //LINHAS PARA BLOCOS
 let btLinhasColunas = document.querySelector('.bt-linhas-colunas')
-mural = document.querySelector('.mural')
-btsRemover = document.querySelectorAll('.opcoesDoCartao-remove')
+let mural = document.querySelector('.mural')
+let btsRemover = document.querySelectorAll('.opcoesDoCartao-remove')
 
-noJs = document.querySelectorAll('.no-js')
+let noJs = document.querySelectorAll('.no-js')
 noJs.forEach(function(element){
     element.classList.remove('no-js')
 })
